@@ -19,6 +19,7 @@ const categories = [
     "Удаленные",
     "Продвинутые",
 ];
+
 export default function HomePage() {
     const [query, setQuery] = useState("");
     const [activeCategory, setActiveCategory] = useState(categories[0]);
@@ -151,11 +152,10 @@ export default function HomePage() {
                                         delay: index * 0.02,
                                     }}
                                 >
+                                    {/* Теперь мы передаем весь объект 'item' целиком,
+                                        а также isFavorite и onToggleFavorite */}
                                     <CommandCard
-                                        id={item.id}
-                                        command={item.command}
-                                        description={item.description}
-                                        example={item.example}
+                                        item={item}
                                         isFavorite={favorites.includes(item.id)}
                                         onToggleFavorite={handleToggleFavorite}
                                     />

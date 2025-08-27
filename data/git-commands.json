@@ -12,7 +12,12 @@
             "имя",
             "пользователь"
         ],
-        "example": "git config --global user.name \"John Doe\"\nИспользуйте --local, чтобы настроить только для текущего репозитория."
+        "example": "git config --global user.name \"John Doe\"\nИспользуйте --local, чтобы настроить только для текущего репозитория.",
+        "interactiveParts": [
+            { "type": "static", "value": "git config --global user.name \"" },
+            { "type": "input", "id": "name", "placeholder": "Your Name" },
+            { "type": "static", "value": "\"" }
+        ]
     },
     {
         "id": 2,
@@ -42,7 +47,15 @@
             "copy",
             "download"
         ],
-        "example": "git clone https://github.com/user/repo.git\nЭто создаст локальную копию удаленного репозитория."
+        "example": "git clone https://github.com/user/repo.git\nЭто создаст локальную копию удаленного репозитория.",
+        "interactiveParts": [
+            { "type": "static", "value": "git clone " },
+            {
+                "type": "input",
+                "id": "url",
+                "placeholder": "https://github.com/..."
+            }
+        ]
     },
     {
         "id": 4,
@@ -65,7 +78,11 @@
             "stage",
             "отслеживать"
         ],
-        "example": "git add index.js\nЧтобы добавить все файлы, используйте 'git add .'"
+        "example": "git add index.js\nЧтобы добавить все файлы, используйте 'git add .'",
+        "interactiveParts": [
+            { "type": "static", "value": "git add " },
+            { "type": "input", "id": "file", "placeholder": "." }
+        ]
     },
     {
         "id": 6,
@@ -73,7 +90,17 @@
         "description": "Сохранить изменения в локальном репозитории",
         "category": "Основы",
         "keywords": ["сохранить", "коммит", "commit", "save", "зафиксировать"],
-        "example": "git commit -m \"Добавлен новый компонент кнопки\"\nКоммит — это снимок состояния ваших файлов."
+        "example": "git commit -m \"Добавлен новый компонент кнопки\"\nКоммит — это снимок состояния ваших файлов.",
+        "visualization": "commit",
+        "interactiveParts": [
+            { "type": "static", "value": "git commit -m \"" },
+            {
+                "type": "input",
+                "id": "message",
+                "placeholder": "Fix: ... / Feat: ..."
+            },
+            { "type": "static", "value": "\"" }
+        ]
     },
     {
         "id": 7,
@@ -89,7 +116,15 @@
         "description": "Создать новую ветку",
         "category": "Ветки",
         "keywords": ["ветка", "создать", "branch", "new"],
-        "example": "git branch feature/new-login\nЭта команда создает ветку, но не переключается на нее."
+        "example": "git branch feature/new-login\nЭта команда создает ветку, но не переключается на нее.",
+        "interactiveParts": [
+            { "type": "static", "value": "git branch " },
+            {
+                "type": "input",
+                "id": "branch_name",
+                "placeholder": "feature/new-login"
+            }
+        ]
     },
     {
         "id": 9,
@@ -97,7 +132,11 @@
         "description": "Переключиться на другую ветку",
         "category": "Ветки",
         "keywords": ["переключиться", "ветка", "checkout", "switch", "go to"],
-        "example": "git checkout main\nДля создания и переключения на новую ветку: git checkout -b new-feature"
+        "example": "git checkout main\nДля создания и переключения на новую ветку: git checkout -b new-feature",
+        "interactiveParts": [
+            { "type": "static", "value": "git checkout " },
+            { "type": "input", "id": "branch", "placeholder": "main" }
+        ]
     },
     {
         "id": 10,
@@ -105,7 +144,12 @@
         "description": "Слить изменения из другой ветки в текущую",
         "category": "Ветки",
         "keywords": ["слить", "объединить", "ветка", "merge"],
-        "example": "Находясь в 'main', выполните 'git merge feature/new-login', чтобы влить в нее изменения."
+        "example": "Находясь в 'main', выполните 'git merge feature/new-login', чтобы влить в нее изменения.",
+        "visualization": "merge",
+        "interactiveParts": [
+            { "type": "static", "value": "git merge " },
+            { "type": "input", "id": "branch", "placeholder": "feature-branch" }
+        ]
     },
     {
         "id": 11,
@@ -137,7 +181,11 @@
         "description": "Показать информацию о конкретном коммите",
         "category": "История и сравнение",
         "keywords": ["show", "commit", "details", "информация", "коммит"],
-        "example": "git show 1a2b3c4\nПоказывает автора, дату, сообщение и изменения в указанном коммите."
+        "example": "git show 1a2b3c4\nПоказывает автора, дату, сообщение и изменения в указанном коммите.",
+        "interactiveParts": [
+            { "type": "static", "value": "git show " },
+            { "type": "input", "id": "commit_hash", "placeholder": "1a2b3c4" }
+        ]
     },
     {
         "id": 14,
@@ -152,7 +200,15 @@
             "восстановить",
             "сбросить"
         ],
-        "example": "git restore index.html\nВозвращает файл index.html к состоянию последнего коммита."
+        "example": "git restore index.html\nВозвращает файл index.html к состоянию последнего коммита.",
+        "interactiveParts": [
+            { "type": "static", "value": "git restore " },
+            {
+                "type": "input",
+                "id": "file_to_restore",
+                "placeholder": "index.html"
+            }
+        ]
     },
     {
         "id": 15,
@@ -168,7 +224,15 @@
         "description": "Отменить коммиты, сохранив изменения в файлах",
         "category": "Отмена изменений",
         "keywords": ["reset", "undo", "откатить", "сбросить"],
-        "example": "git reset HEAD~1\nОтменяет последний коммит, но оставляет все изменения в вашей рабочей директории."
+        "example": "git reset HEAD~1\nОтменяет последний коммит, но оставляет все изменения в вашей рабочей директории.",
+        "interactiveParts": [
+            { "type": "static", "value": "git reset " },
+            {
+                "type": "input",
+                "id": "commit_to_reset",
+                "placeholder": "HEAD~1"
+            }
+        ]
     },
     {
         "id": 17,
@@ -269,7 +333,12 @@
             "перебазировать",
             "объединить"
         ],
-        "example": "git rebase -i HEAD~3\nПозволяет редактировать, объединять (squash), переупорядочивать последние 3 коммита."
+        "example": "git rebase -i HEAD~3\nПозволяет редактировать, объединять (squash), переупорядочивать последние 3 коммита.",
+        "visualization": "rebase",
+        "interactiveParts": [
+            { "type": "static", "value": "git rebase -i HEAD~" },
+            { "type": "input", "id": "rebase_count", "placeholder": "3" }
+        ]
     },
     {
         "id": 24,
@@ -277,6 +346,14 @@
         "description": "Применить один коммит из другой ветки",
         "category": "Продвинутые",
         "keywords": ["cherry-pick", "pick", "commit", "выбрать", "коммит"],
-        "example": "git cherry-pick 1a2b3c4\nБерет указанный коммит и применяет его к вашей текущей ветке."
+        "example": "git cherry-pick 1a2b3c4\nБерет указанный коммит и применяет его к вашей текущей ветке.",
+        "interactiveParts": [
+            { "type": "static", "value": "git cherry-pick " },
+            {
+                "type": "input",
+                "id": "cherry_pick_commit",
+                "placeholder": "1a2b3c4"
+            }
+        ]
     }
 ]
