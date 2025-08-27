@@ -5,33 +5,29 @@ import { createContext, useState, useEffect, useContext } from "react";
 const ThemeContext = createContext();
 
 export function ThemeProvider({ children }) {
-    // Устанавливаем 'light' по умолчанию, чтобы избежать ошибок на сервере
-    const [theme, setTheme] = useState("light");
+    const [theme, setTheme] = useState("dark"); // <-- Устанавливаем темную тему по умолчанию
 
     // Этот useEffect выполняется ТОЛЬКО на клиенте
     useEffect(() => {
         const storedTheme = localStorage.getItem("theme");
-        const prefersDark = window.matchMedia(
-            "(prefers-color-scheme: dark)"
-        ).matches;
-
-        // Устанавливаем тему из localStorage или по системным настройкам
         if (storedTheme) {
             setTheme(storedTheme);
-        } else if (prefersDark) {
-            setTheme("dark");
         }
-    }, []); // Пустой массив зависимостей означает, что эффект выполнится один раз
+    }, []);
 
     useEffect(() => {
         const root = document.documentElement;
         if (theme === "dark") {
             root.classList.add("dark");
+            document.body.classList.add("bg-black");
+            document.body.classList.remove("bg-slate-50");
         } else {
             root.classList.remove("dark");
+            document.body.classList.add("bg-slate-50");
+            document.body.classList.remove("bg-black");
         }
         localStorage.setItem("theme", theme);
-    }, [theme]); // Этот эффект срабатывает при каждом изменении темы
+    }, [theme]);
 
     return (
         <ThemeContext.Provider value={{ theme, setTheme }}>

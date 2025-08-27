@@ -12,7 +12,7 @@ export default function RootLayout({ children }) {
     return (
         <html lang="ru" suppressHydrationWarning>
             <body
-                className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased bg-white text-black dark:bg-black dark:text-white transition-colors duration-300`}
+                className={`${GeistSans.variable} ${GeistMono.variable} font-sans antialiased`}
             >
                 <ThemeProvider>{children}</ThemeProvider>
             </body>

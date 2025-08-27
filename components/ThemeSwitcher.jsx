@@ -18,10 +18,9 @@ export const ThemeSwitcher = () => {
 
     return (
         <button
-            onClick={() => {
-                setTheme(theme === "dark" ? "light" : "dark");
-            }}
-            className="p-2 rounded-md hover:bg-slate-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 dark:hover:bg-slate-800"
+            onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
+            className="p-2 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-sky-500
+                       hover:bg-slate-200 dark:hover:bg-white/10"
             aria-label="Переключить тему"
         >
             {theme === "dark" ? (

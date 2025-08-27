@@ -1,8 +1,24 @@
 [
     {
         "id": 1,
+        "command": "git config --global user.name \"[name]\"",
+        "description": "Настроить имя пользователя для всех репозиториев",
+        "category": "Настройка",
+        "keywords": [
+            "config",
+            "user",
+            "name",
+            "настройка",
+            "имя",
+            "пользователь"
+        ],
+        "example": "git config --global user.name \"John Doe\"\nИспользуйте --local, чтобы настроить только для текущего репозитория."
+    },
+    {
+        "id": 2,
         "command": "git init",
         "description": "Инициализировать новый локальный репозиторий",
+        "category": "Настройка",
         "keywords": [
             "новый",
             "репозиторий",
@@ -14,9 +30,10 @@
         "example": "Создает подпапку .git в текущей директории, превращая ее в Git-репозиторий."
     },
     {
-        "id": 2,
+        "id": 3,
         "command": "git clone [url]",
         "description": "Клонировать существующий репозиторий",
+        "category": "Настройка",
         "keywords": [
             "скачать",
             "копировать",
@@ -28,9 +45,18 @@
         "example": "git clone https://github.com/user/repo.git\nЭто создаст локальную копию удаленного репозитория."
     },
     {
-        "id": 3,
+        "id": 4,
+        "command": "git status",
+        "description": "Показать состояние файлов в репозитории",
+        "category": "Основы",
+        "keywords": ["статус", "состояние", "status", "проверить", "изменения"],
+        "example": "Показывает, какие файлы изменены, какие добавлены в индекс, а какие нет."
+    },
+    {
+        "id": 5,
         "command": "git add [file]",
         "description": "Добавить файл в индекс (staging area)",
+        "category": "Основы",
         "keywords": [
             "добавить",
             "файл",
@@ -42,24 +68,215 @@
         "example": "git add index.js\nЧтобы добавить все файлы, используйте 'git add .'"
     },
     {
-        "id": 4,
+        "id": 6,
         "command": "git commit -m \"[message]\"",
         "description": "Сохранить изменения в локальном репозитории",
+        "category": "Основы",
         "keywords": ["сохранить", "коммит", "commit", "save", "зафиксировать"],
         "example": "git commit -m \"Добавлен новый компонент кнопки\"\nКоммит — это снимок состояния ваших файлов."
     },
     {
-        "id": 5,
-        "command": "git status",
-        "description": "Показать состояние файлов в репозитории",
-        "keywords": ["статус", "состояние", "status", "проверить", "изменения"],
-        "example": "Показывает, какие файлы изменены, какие добавлены в индекс, а какие нет."
+        "id": 7,
+        "command": "git branch",
+        "description": "Показать список всех веток",
+        "category": "Ветки",
+        "keywords": ["ветки", "список", "branch", "list", "show"],
+        "example": "git branch\nТекущая ветка будет отмечена звездочкой (*)."
     },
     {
-        "id": 6,
-        "command": "git reset HEAD~1",
-        "description": "Отменить последний коммит (сохранив изменения)",
-        "keywords": ["отменить", "коммит", "reset", "undo", "откатить"],
-        "example": "Эта команда отменяет последний коммит, но оставляет изменения в вашей рабочей директории. Идеально, если вы закоммитили что-то лишнее."
+        "id": 8,
+        "command": "git branch [name]",
+        "description": "Создать новую ветку",
+        "category": "Ветки",
+        "keywords": ["ветка", "создать", "branch", "new"],
+        "example": "git branch feature/new-login\nЭта команда создает ветку, но не переключается на нее."
+    },
+    {
+        "id": 9,
+        "command": "git checkout [branch]",
+        "description": "Переключиться на другую ветку",
+        "category": "Ветки",
+        "keywords": ["переключиться", "ветка", "checkout", "switch", "go to"],
+        "example": "git checkout main\nДля создания и переключения на новую ветку: git checkout -b new-feature"
+    },
+    {
+        "id": 10,
+        "command": "git merge [branch]",
+        "description": "Слить изменения из другой ветки в текущую",
+        "category": "Ветки",
+        "keywords": ["слить", "объединить", "ветка", "merge"],
+        "example": "Находясь в 'main', выполните 'git merge feature/new-login', чтобы влить в нее изменения."
+    },
+    {
+        "id": 11,
+        "command": "git log",
+        "description": "Показать историю коммитов",
+        "category": "История и сравнение",
+        "keywords": ["log", "history", "commits", "list", "история", "список"],
+        "example": "git log\nДля более красивого вывода используйте: git log --oneline --graph --decorate"
+    },
+    {
+        "id": 12,
+        "command": "git diff",
+        "description": "Показать разницу между изменениями",
+        "category": "История и сравнение",
+        "keywords": [
+            "diff",
+            "difference",
+            "changes",
+            "compare",
+            "разница",
+            "изменения",
+            "сравнить"
+        ],
+        "example": "git diff (показывает незаиндексированные изменения)\ngit diff --staged (показывает индексированные изменения)"
+    },
+    {
+        "id": 13,
+        "command": "git show [commit]",
+        "description": "Показать информацию о конкретном коммите",
+        "category": "История и сравнение",
+        "keywords": ["show", "commit", "details", "информация", "коммит"],
+        "example": "git show 1a2b3c4\nПоказывает автора, дату, сообщение и изменения в указанном коммите."
+    },
+    {
+        "id": 14,
+        "command": "git restore [file]",
+        "description": "Отменить изменения в рабочем файле",
+        "category": "Отмена изменений",
+        "keywords": [
+            "restore",
+            "discard",
+            "undo",
+            "отменить",
+            "восстановить",
+            "сбросить"
+        ],
+        "example": "git restore index.html\nВозвращает файл index.html к состоянию последнего коммита."
+    },
+    {
+        "id": 15,
+        "command": "git restore --staged [file]",
+        "description": "Убрать файл из индекса (unstage)",
+        "category": "Отмена изменений",
+        "keywords": ["restore", "unstage", "убрать из индекса"],
+        "example": "git restore --staged index.js\nФайл останется измененным, но не будет включен в следующий коммит."
+    },
+    {
+        "id": 16,
+        "command": "git reset [commit]",
+        "description": "Отменить коммиты, сохранив изменения в файлах",
+        "category": "Отмена изменений",
+        "keywords": ["reset", "undo", "откатить", "сбросить"],
+        "example": "git reset HEAD~1\nОтменяет последний коммит, но оставляет все изменения в вашей рабочей директории."
+    },
+    {
+        "id": 17,
+        "command": "git commit --amend",
+        "description": "Изменить последний коммит",
+        "category": "Отмена изменений",
+        "keywords": [
+            "amend",
+            "change",
+            "fix",
+            "edit",
+            "изменить",
+            "исправить",
+            "последний коммит"
+        ],
+        "example": "Добавьте нужные файлы (git add) и выполните эту команду, чтобы обновить последний коммит, не создавая новый."
+    },
+    {
+        "id": 18,
+        "command": "git remote -v",
+        "description": "Показать список удаленных репозиториев",
+        "category": "Удаленные",
+        "keywords": [
+            "remote",
+            "url",
+            "list",
+            "удаленный",
+            "репозиторий",
+            "список"
+        ],
+        "example": "Показывает URL для fetch (загрузки) и push (отправки) для каждого удаленного репозитория."
+    },
+    {
+        "id": 19,
+        "command": "git fetch [remote]",
+        "description": "Загрузить изменения, но не сливать их",
+        "category": "Удаленные",
+        "keywords": [
+            "fetch",
+            "get",
+            "download",
+            "получить",
+            "скачать",
+            "без слияния"
+        ],
+        "example": "git fetch origin\nОбновляет ваше локальное представление удаленных веток."
+    },
+    {
+        "id": 20,
+        "command": "git pull",
+        "description": "Загрузить изменения и слить их",
+        "category": "Удаленные",
+        "keywords": [
+            "pull",
+            "update",
+            "download",
+            "merge",
+            "обновить",
+            "скачать",
+            "получить"
+        ],
+        "example": "git pull origin main\nПо сути, это комбинация 'git fetch' и 'git merge'."
+    },
+    {
+        "id": 21,
+        "command": "git push",
+        "description": "Отправить коммиты в удаленный репозиторий",
+        "category": "Удаленные",
+        "keywords": ["отправить", "загрузить", "push", "remote", "upload"],
+        "example": "git push origin main\nОтправляет коммиты из локальной ветки 'main' в удаленную."
+    },
+    {
+        "id": 22,
+        "command": "git stash",
+        "description": "Временно сохранить незакоммиченные изменения",
+        "category": "Продвинутые",
+        "keywords": [
+            "stash",
+            "save",
+            "temporary",
+            "hide",
+            "спрятать",
+            "сохранить",
+            "временно"
+        ],
+        "example": "git stash\nИспользуйте 'git stash pop' или 'git stash apply', чтобы вернуть изменения."
+    },
+    {
+        "id": 23,
+        "command": "git rebase -i HEAD~[n]",
+        "description": "Интерактивно изменить последние N коммитов",
+        "category": "Продвинутые",
+        "keywords": [
+            "rebase",
+            "interactive",
+            "squash",
+            "edit",
+            "перебазировать",
+            "объединить"
+        ],
+        "example": "git rebase -i HEAD~3\nПозволяет редактировать, объединять (squash), переупорядочивать последние 3 коммита."
+    },
+    {
+        "id": 24,
+        "command": "git cherry-pick [commit]",
+        "description": "Применить один коммит из другой ветки",
+        "category": "Продвинутые",
+        "keywords": ["cherry-pick", "pick", "commit", "выбрать", "коммит"],
+        "example": "git cherry-pick 1a2b3c4\nБерет указанный коммит и применяет его к вашей текущей ветке."
     }
 ]

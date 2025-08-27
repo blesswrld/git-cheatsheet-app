@@ -1,3 +1,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.aurora-background {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120vw;
+    height: 120vh;
+    background-image: radial-gradient(
+        circle at 30% 40%,
+        rgba(100, 116, 139, 0.2)
+    );
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+}
